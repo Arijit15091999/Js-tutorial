@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body style="
+    background-color: #212121; 
+    color: #fff;">
+    <ul class="language" >
+        <li>javascript</li>
+    </ul>
+    <ol class="language">
+        <li>javascript</li>
+    </ol>
+</body>
+
+<script>
+    function addLanguage(langName) {
+        const li = document.createElement("li");
+        const child = li.appendChild(document.createTextNode(langName));
+        document.querySelector(".language").appendChild(li);
+    }
+
+    addLanguage("ruby");
+    addLanguage("Python");
+
+    //edit
+
+    function editLanguage(index, langName) {
+        const list = document.querySelector(".language");
+
+        if(!list) {
+            console.log("list does not exist");
+            return;
+        }
+        const lis = list.querySelectorAll("li");
+        // 1st approach
+        // lis[index].textContent = langName;
+        // console.log(list); 
+
+        // 2nd approach
+
+        if(index >= lis.length || index < 0) {
+            console.log("wrong index");
+            return;
+        }
+        console.log(lis.length);
+
+
+        const li = document.createElement("li");
+        li.textContent = langName;
+        lis[index].replaceWith(li); 
+    }  
+    
+    editLanguage(0, "Java");
+    editLanguage(2, "Go Lang")
+
+    //remove
+
+    function removeLanguage(index) {
+        const list = document.querySelector(".language");
+
+        if (!list) {
+            console.log("list does not exist");
+            return;
+        }
+
+        const lis = list.querySelectorAll("li");
+
+        if (lis.length = 0 || index >= lis.length || index < 0) {
+            console.log("wrong index");
+            return;
+        }
+
+        lis[index].remove();
+    }
+
+    removeLanguage(23);
+    
+</script>
+</html>
