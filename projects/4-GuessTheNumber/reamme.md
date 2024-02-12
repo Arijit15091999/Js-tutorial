@@ -1,3 +1,6 @@
+``` javascript
+
+
 const randomNumber = parseInt(Math.random() * 100 + 1);
 // console.log(randomNumber);
 let remainningGuesses = 10;
@@ -82,3 +85,6 @@ function endGame() {
     document.querySelector(".guesses").disabled = true;
 }
 
+
+
+```
