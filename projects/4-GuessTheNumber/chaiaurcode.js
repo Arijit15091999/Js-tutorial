@@ -1,6 +1,7 @@
 const randomNumber = parseInt(Math.random() * 100 + 1);
 console.log(randomNumber);
 let remainningGuesses = 10;
+let playGame = true;
 
 const submitButton = document.querySelector("#subt");
 // console.log(submitButton);
@@ -11,7 +12,8 @@ submitButton.addEventListener("click", function (event) {
     userInput.value = "";
     // console.log(guess);
 
-    validateGuess(guess);
+    if(playGame)
+        validateGuess(guess);
 })
 function validateGuess(guess) {
     const prevGuessFeild = document.querySelector(".guesses");
@@ -27,6 +29,7 @@ function validateGuess(guess) {
 
 function checkTheGuess(guess) {
     remainningGuesses--;
+    document.querySelector(".lastResult").innerHTML = remainningGuesses;
     if (remainningGuesses < 1) {
         showStartButton("Game Over");
     }
@@ -49,6 +52,7 @@ function showMessage(message) {
 }
 
 function showStartButton(message) {
+    endGame();
     const p = document.createElement("p");
     console.log(p);
     p.innerHTML = `${message}`;
@@ -67,7 +71,14 @@ function showStartButton(message) {
 }
 
 function startGame() {
+    playGame = true;
     document.querySelector(".guesses").innerHTML = "";
     remainningGuesses = 10;
+    document.querySelector(".lastResult").innerHTML = remainningGuesses;
+}
+
+function endGame() {
+    playGame = false;
+    document.querySelector(".guesses").disabled = true;
 }
 
