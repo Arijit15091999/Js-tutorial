@@ -22,7 +22,7 @@ stopButton.addEventListener(
         clearTimeout(setIntervalId);
         setIntervalId = null;
     }
-);
+)
 
 function createRandomColors() {
     let color = "#";
