@@ -1,20 +1,20 @@
 const promise = new Promise(function (resolve, reject) {
-    let error = true;
+    setTimeout(
+        function () {
+            let error = true;
 
-    // setTimeout(function () {
-    //     console.log("hei");
-    // }, 1000);
-
-    if (!error) {
-        resolve(
-            {
-                username: "Arijit",
-                password: "123",
+            if (!error) {
+                resolve(
+                    {
+                        username: "Arijit",
+                        password: "123",
+                    }
+                );
+            } else {
+                reject("error occured");
             }
-        );
-    } else {
-        reject("error occured");
-    }
+        }, 1000
+    );
 })
 
 
@@ -33,8 +33,13 @@ promise
         function (error) {
             console.log(error);
         }
-)
-    
-// console.log("done");
+    )
+    .finally(function () {
+        console.log("promise done");
+    }
+    );
+console.log(promise);
+console.log("done");
+console.log(promise);
     
 
